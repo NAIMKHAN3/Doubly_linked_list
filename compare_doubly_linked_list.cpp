@@ -29,23 +29,22 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
 
 bool same_or_not(Node *head, Node *head2)
 {
-    vector<int> a;
-    vector<int> b;
-    Node *temp = head;
-    Node *temp2 = head2;
-    while (temp != NULL)
+    bool flag = true;
+    while (head != NULL && head2 != NULL)
     {
-        a.push_back(temp->val);
-        temp = temp->next;
+
+        if (head->val != head2->val)
+        {
+            flag = false;
+            break;
+        }
+        head = head->next;
+        head2 = head2->next;
     }
-    while (temp2 != NULL)
+    if (head == NULL && head2 == NULL)
     {
-        b.push_back(temp2->val);
-        temp2 = temp2->next;
-    }
-    if (a == b)
-    {
-        return true;
+
+        return flag;
     }
     else
     {
